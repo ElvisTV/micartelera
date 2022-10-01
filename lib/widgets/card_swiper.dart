@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter_swiper_view/flutter_swiper_view.dart';
+
 
 class CardSwiper extends StatelessWidget {  
   const CardSwiper({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class CardSwiper extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: const FadeInImage(
-                placeholder: AssetImage('assets/no-iomage.jpg'),
+                placeholder: AssetImage('assets/no-image.jpg'),
                 image: NetworkImage('https://via.placeholder.com/300x400'),
                 fit: BoxFit.cover
               ),
