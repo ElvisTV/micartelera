@@ -1,4 +1,5 @@
 import  'package:flutter/material.dart';
+import 'package:micartelera/widgets/widgets.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});
@@ -21,12 +22,7 @@ class DetailsScreen extends StatelessWidget {
               _Overview(),
               _Overview(),
               _Overview(),
-              _Overview(),
-              _Overview(),
-              _Overview(),
-              _Overview(),
-              _Overview(),
-              _Overview(),
+              CastingCards()
             ]
                
             )
