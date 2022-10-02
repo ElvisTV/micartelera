@@ -34,6 +34,12 @@ class Movie {
     double voteAverage;
     int voteCount;
 
+    get fullPosterImg {
+      if ( this.posterPath != null )
+        return 'https://image.tmdb.org/t/p/w500${this.posterPath }';
+      return 'https://www.webempresa.com/foro/wp-content/uploads/wpforo/attachments/3200/318277=80538-Sin_imagen_disponible.jpg';
+    }
+
     factory Movie.fromJson(String str) => Movie.fromMap(json.decode(str));
 
     // String toJson() => json.encode(toMap());
