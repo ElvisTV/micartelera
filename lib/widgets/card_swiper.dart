@@ -39,7 +39,8 @@ class CardSwiper extends StatelessWidget {
         itemBuilder: ( _ , int index ) {
 
           final  movie = movies[index];
-          print(movie.fullPosterImg);
+          // elvis();
+          // print(movie.fullPosterImg);
           return GestureDetector(
             onTap: () => Navigator.pushNamed(context, 'details', arguments: 'movie-instance'),
             child: ClipRRect(
@@ -56,4 +57,8 @@ class CardSwiper extends StatelessWidget {
       )
     );
   }
+}
+
+elvis() {
+  print('peru campeon');
 }

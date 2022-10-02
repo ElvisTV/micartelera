@@ -54,9 +54,14 @@ class MoviesProvider extends ChangeNotifier {
     
     final popularResponse = PopularReponse.fromJson(response.body);
 
-    // print( nowPlayingResponse.results[1].title);
+    print('tesa');
+    print( popularResponse.results[1].title);
+    print('peru');
+    print( popularResponse.results.length);
+    print('ecuador');
+    popularMovies = [ ...popularMovies , ...popularResponse.results] ;
 
-    OnDisplayMovies = [ ...popularMovies , ...popularResponse.results] ;
+
     notifyListeners(); // para avisar a todos los widgets que utlizan la data, si se actualiza
 
   }
