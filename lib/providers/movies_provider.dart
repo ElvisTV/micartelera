@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:micartelera/models/credits_response.dart';
 import 'package:micartelera/models/models.dart';
 
 class MoviesProvider extends ChangeNotifier {
@@ -12,6 +13,8 @@ class MoviesProvider extends ChangeNotifier {
 
   List<Movie> OnDisplayMovies = [];
   List<Movie> popularMovies = [];
+
+  Map<int, List<Cast>> moviesCast = {};
 
   int _popularPage = 0;
 
@@ -65,6 +68,25 @@ class MoviesProvider extends ChangeNotifier {
 
 
     notifyListeners(); // para avisar a todos los widgets que utlizan la data, si se actualiza
+
+  }
+
+  Future<List<Cast>> getMovieCast(int movieId) async {
+    
+    // TOOD: revisar el mapa
+
+    if ( moviesCast.containsKey(movieId) ) return moviesCast[movieId]!;
+    
+
+    // print('pidiendo info al servidor - Cast');
+
+    final jsonData = await this._getJsonData('3/movie/$movieId/credits');
+    final creditsResponse = CreditsResponse.fromJson(jsonData);
+
+    moviesCast[movieId] = creditsResponse.cast;
+
+    return creditsResponse.cast;
+
 
   }
 

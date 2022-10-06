@@ -3,6 +3,8 @@ import 'package:micartelera/providers/movies_provider.dart';
 import 'package:micartelera/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
+import '../search/search_delegate.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -21,7 +23,8 @@ class HomeScreen extends StatelessWidget {
             actions: [
               IconButton(
                 icon: const Icon(Icons.search_outlined),
-                onPressed: () {},
+                onPressed: () => showSearch(context: context, delegate: MovieSearchDelegate())
+                
               )
             ]),
         body: SingleChildScrollView(
