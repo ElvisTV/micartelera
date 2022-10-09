@@ -77,7 +77,7 @@ class _MovieSliderState extends State<MovieSlider> {
               itemCount: widget.movies.length,
               itemBuilder: (_, int index) { 
                 
-                 return _MoviesPoster(widget.movies[index]);
+                 return _MoviesPoster(widget.movies[index], '${widget.title}-${index}-${widget.movies[index].id}');
               }   
             )
           )
@@ -94,10 +94,12 @@ class _MovieSliderState extends State<MovieSlider> {
 class _MoviesPoster extends StatelessWidget {
   
   final Movie movie;
-  const _MoviesPoster(this.movie);
+  final String heroId;
+  const _MoviesPoster(this.movie, this.heroId);
 
   @override
   Widget build(BuildContext context) {
+    movie.heroId = heroId;
     return Container(
       width: 130,
       height: 160,
@@ -109,15 +111,18 @@ class _MoviesPoster extends StatelessWidget {
 
           GestureDetector(
             onTap: () => Navigator.pushNamed(context, 'details', arguments: movie),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: FadeInImage(
-                placeholder: AssetImage('assets/no-image.jpg'),
-                // image: NetworkImage('https://avatar.amuniversal.com/user_avatars/avatars_gocomicsver3/1241000/1241766/spongebob-300x400.jpg'),
-                image: NetworkImage(movie.fullPosterImg),
-                width: 130,
-                height: 140,
-                fit: BoxFit.cover,
+            child: Hero(
+              tag: movie.heroId!,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: FadeInImage(
+                  placeholder: AssetImage('assets/no-image.jpg'),
+                  // image: NetworkImage('https://avatar.amuniversal.com/user_avatars/avatars_gocomicsver3/1241000/1241766/spongebob-300x400.jpg'),
+                  image: NetworkImage(movie.fullPosterImg),
+                  width: 130,
+                  height: 140,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
